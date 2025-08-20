@@ -72,8 +72,12 @@ function Menu() {
 }
 
 function Footer() {
-    // return React.createElement("footer", null, "We're currently open");
-
+    const hour = new Date().getHours();
+    console.log(hour);
+    const openHour = 12;
+    const closeHour = 22;
+    const isOpen = hour >= openHour && hour <= closeHour;
+    console.log(isOpen);
     return (
         <footer>{new Date().toLocaleTimeString()} We're currently open</footer>
     );
@@ -82,7 +86,7 @@ function Footer() {
 function Pizza() {
     return (
         <div>
-            <img src="pizzas/prosciutto.jpg" alt="Prosciutto" />
+            <img src="/pizzas/prosciutto.jpg" alt="Prosciutto" />
             <h2>Pizza Prosciutto</h2>
             <p>Tomato, mozarella, ham, aragula, and burrata cheese</p>
         </div>
