@@ -114,7 +114,8 @@ function Footer() {
 }
 
 function Pizza(props) {
-    console.log(props);
+
+    if (props.pizzaObj.soldOut) return null;
 
     return (
         <li className="pizza">
