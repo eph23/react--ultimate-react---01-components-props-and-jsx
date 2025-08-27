@@ -1,5 +1,33 @@
 import "./App.css";
 
+const skills = [
+    {
+        skill: "HTML+CSS",
+        level: "advanced",
+        color: "#2662ea",
+    },
+    {
+        skill: "JavaScript",
+        level: "advanced",
+        color: "#efd81d",
+    },
+    {
+        skill: "Web Design",
+        level: "advanced",
+        color: "#c3dcaf",
+    },
+    {
+        skill: "Git and Github",
+        level: "intermediate",
+        color: "#e84f33",
+    },
+    {
+        skill: "react",
+        level: "advanced",
+        color: "#60dafb",
+    },
+];
+
 function Avator() {
     return <img src="profile.jpg" alt="image" className="avatar" />;
 }
@@ -12,20 +40,8 @@ const Intro = () => {
                 Lorem Ipsum is simply dummy text of the printing and typesetting
                 industry. Lorem Ipsum has been the industry's standard dummy
                 text ever since the 1500s, when an unknown printer took a galley
-                of type and scrambled it to make a type specimen book.{" "}
+                of type and scrambled it to make a type specimen book.
             </p>
-        </div>
-    );
-};
-
-const Skill = function (props) {
-    return (
-        <div
-            className="skill"
-            style={{ backgroundColor: props.color, color: props.textColor }}
-        >
-            <span>{props.emoji}</span>
-            <span>{props.skill}</span>
         </div>
     );
 };
@@ -33,18 +49,29 @@ const Skill = function (props) {
 const SkillList = () => {
     return (
         <div className="skill-list">
-            <Skill skill="React" emoji="🌐" color="blue" textColor="white" />
-            <Skill
-                skill="JavaScript"
-                emoji="💪🏻"
-                color="yellow"
-                textColor="black"
-            />
-            <Skill skill="CSS" emoji="💪🏻" color="pink" textColor="black" />
-            <Skill skill="HTML" emoji="💪🏻" color="green" textColor="white" />
+            {skills.map((skill) => (
+                <Skill
+                    skill={skill.skill}
+                    color={skill.color}
+                    level={skill.level}
+                />
+            ))}
         </div>
     );
 };
+
+function Skill({ skill, color, level }) {
+    return (
+        <div className="skill" style={{ backgroundColor: color }}>
+            <span>{skill}</span>
+            <span>
+                {level === "beginner" && "👶🏻"}
+                {level === "intermediate" && "👍🏻"}
+                {level === "advanced" && "💪🏻"}
+            </span>
+        </div>
+    );
+}
 
 function App() {
     return (
